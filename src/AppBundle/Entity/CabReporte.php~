@@ -1,0 +1,109 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CabReporte
+ *
+ * @ORM\Table(name="cab_reporte")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CabReporteRepository")
+ */
+class CabReporte
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Estudiante", inversedBy="CabReporte")
+     * @ORM\JoinColumn(name="EstFk", referencedColumnName="id")     *
+     */
+    private $EstFk;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaResp", type="datetimetz")
+     */
+    private $fechaResp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="despRep", type="string", length=100)
+     */
+    private $despRep;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DetReporte", mappedBy="CabFk")
+     */
+    private $DetallesReporte;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaResp
+     *
+     * @param \DateTime $fechaResp
+     *
+     * @return CabReporte
+     */
+    public function setFechaResp($fechaResp)
+    {
+        $this->fechaResp = $fechaResp;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaResp
+     *
+     * @return \DateTime
+     */
+    public function getFechaResp()
+    {
+        return $this->fechaResp;
+    }
+
+    /**
+     * Set despRep
+     *
+     * @param string $despRep
+     *
+     * @return CabReporte
+     */
+    public function setDespRep($despRep)
+    {
+        $this->despRep = $despRep;
+
+        return $this;
+    }
+
+    /**
+     * Get despRep
+     *
+     * @return string
+     */
+    public function getDespRep()
+    {
+        return $this->despRep;
+    }
+}
+

@@ -1,0 +1,7 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ form_start(Form) }}
+    {% form_theme Form 'bootstrap_3_layout.html.twig' %}
+    {{ form(Form) }}
+    {{ form_end(Form) }}
+{% endblock %}
