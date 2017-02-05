@@ -21,7 +21,7 @@ class ProfesorType extends AbstractType
         $builder->add('nomProf',TextType::class)
                 ->add('apeProf',TextType::class)
                 ->add('userName',TextType::class)
-                ->add('passTPRof', RepeatedType::class, array(
+                ->add('PassTemp', RepeatedType::class, array(
                     'type' => PasswordType::class,
                     'first_options'=> array('label'=> 'Contraseña'),
                     'second_options'=> array('label'=>'Verificar contraseña')

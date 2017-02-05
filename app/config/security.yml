@@ -27,5 +27,10 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-    provider: db_provider
+
+    #Algoritmos de codificacion.
+    encoders:
+            AppBundle\Entity\Profesor: #entidad que se aplicara la codificacion.
+                algorithm: bcrypt
+                #cost: 12
 

@@ -1,5 +1,14 @@
 {% extends "::base.html.twig" %}
 {% block body %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="flash-success alert alert-success"  role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ flash_message | upper }}
+        </div>
+    {% endfor %}
+    <a href="{{ path('profesorNew') }}">Registarse</a>
     <table id="#CategoriasTable" class="table table-striped">
         <tr>
             <th>Codigo</th>
@@ -11,7 +20,8 @@
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ prof.nomProf}}</td>
-
+                <td><a href="{{ path('profesoredit',{'idUser':prof.id}) }}">Editar</a></td>
+                <td><a href="{{ path('profesordelete',{'idUser':prof.id}) }}">Eliminar</a></td>
             </tr>
         {% endfor %}
     </table>
